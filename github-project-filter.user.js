@@ -43,6 +43,8 @@
 
         selectList.addEventListener('change', (event) => {
             let currentProject = location.protocol + '//' + location.host + location.pathname
+            
+            //Perhaps this part could be done without loading the entire page again, ideas?
             window.location.replace(currentProject + "?card_filter_query=assignee%3A" + event.target.value);
         });
     }
