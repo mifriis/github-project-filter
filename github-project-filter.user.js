@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         GitHub projects - Quick filter by user
 // @namespace    michael.friis.userscripts
-// @version      1.1
+// @version      1.2
 // @description  Allows you to quickly choose a user from the list of assignees and filter issues by them.
 // @author       Michael Nissen Thorup Friis
 // @match        https://github.com/*/*/projects/*
@@ -31,8 +31,9 @@
     function addDropdown(assignees) {
         let controlpanel = document.getElementsByClassName("project-header-controls")[0];
         let selectList = document.createElement("select");
+        selectList.classList.add("form-control");
         selectList.id = "assigneeFiltering";
-        controlpanel.appendChild(selectList);
+        controlpanel.insertBefore(selectList, controlpanel.firstChild);
 
         for (let i = 0; i < assignees.length; i++) {
             let option = document.createElement("option");
