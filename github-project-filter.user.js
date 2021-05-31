@@ -6,7 +6,6 @@
 // @author       Michael Nissen Thorup Friis
 // @match        https://github.com/*/*/projects/*
 // @grant        none
-// @run-at      document-idle
 // ==/UserScript==
 
 (function() {
@@ -49,6 +48,7 @@
         });
     }
 
+    //Github loads in each column async. We need to wait until the first column popsup, then wait a little while longer as the rest load. Please help make this better!
     (new MutationObserver(check)).observe(document, {childList: true, subtree: true});
     function check(changes, observer) {
         if(document.querySelector('.project-column')) {
