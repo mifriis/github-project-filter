@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         GitHub projects - Quick filter by user
 // @namespace    https://www.lego.com
-// @version      0.2
+// @version      1.1
 // @description  Allows you to quickly choose a user from the list of assignees and filter issues by them.
 // @author       Michael Nissen Thorup Friis
 // @match        https://github.com/*/*/projects/*
@@ -34,7 +34,6 @@
         selectList.id = "assigneeFiltering";
         controlpanel.appendChild(selectList);
 
-        //Create and append the options
         for (let i = 0; i < assignees.length; i++) {
             let option = document.createElement("option");
             option.value = assignees[i];
