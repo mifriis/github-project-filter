@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         GitHub projects - Quick filter by user
 // @namespace    michael.friis.userscripts
-// @version      1.2
+// @version      1.3
 // @description  Allows you to quickly choose a user from the list of assignees and filter issues by them.
 // @author       Michael Nissen Thorup Friis
 // @match        https://github.com/*/*/projects/*
@@ -25,6 +25,7 @@
                 assignees.push(assignee[x])
             }
         }
+        assignees.sort();
         addDropdown(assignees);
     }
 
@@ -44,7 +45,7 @@
 
         selectList.addEventListener('change', (event) => {
             let currentProject = location.protocol + '//' + location.host + location.pathname
-            
+
             //Perhaps this part could be done without loading the entire page again, ideas?
             window.location.replace(currentProject + "?card_filter_query=assignee%3A" + event.target.value);
         });
