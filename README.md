@@ -1,5 +1,5 @@
-# Headline
-Something cool here
+# Github Project Filter - Assignee
+We keep forgetting what each others usernames are making daily a bit difficult. This script tries to solve that by adding all active assignees to a select box where you can filter the cards from.
 
 ## Installation
 
