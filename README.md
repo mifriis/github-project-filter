@@ -8,7 +8,7 @@ Something cool here
 	* Firefox - install [Tampermonkey](https://tampermonkey.net/?ext=dhdg&browser=firefox) or [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/) (GM v4+ is **not supported**!).
 	* Chrome - install [Tampermonkey](https://tampermonkey.net/?ext=dhdg&browser=chrome).
 
-2. Install: b<https://raw.githubusercontent.com/mifriis/github-project-filter/main/github-project-filter.user.js>
+2. Install: <https://raw.githubusercontent.com/mifriis/github-project-filter/main/github-project-filter.user.js>
 
 ## What about styling
 
