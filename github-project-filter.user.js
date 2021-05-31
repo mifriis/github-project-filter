@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         GitHub projects - Quick filter by user
-// @namespace    https://www.lego.com
+// @namespace    michael.friis.userscripts
 // @version      1.1
 // @description  Allows you to quickly choose a user from the list of assignees and filter issues by them.
 // @author       Michael Nissen Thorup Friis
