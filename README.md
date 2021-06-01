@@ -1,5 +1,5 @@
-# Github Project Filter - Assignee
-We keep forgetting what each others usernames are making daily a bit difficult. This script tries to solve that by adding all active assignees to a select box where you can filter the cards from.
+# Github Project Filter - Quick board filters
+We keep forgetting what each others usernames are making daily a bit difficult. This script tries to solve that by adding all active assignees and milestones to a select boxes where you can filter the cards from.
 
 ![screenshot](https://raw.githubusercontent.com/mifriis/github-project-filter/main/img/github-filtering.png)
 
