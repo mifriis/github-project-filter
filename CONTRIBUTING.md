@@ -10,6 +10,5 @@ Thank you!
 
 ## Areas to improve
 
-* Redirecting seems a bit wasteful. Is there a better solution? <https://github.com/mifriis/github-project-filter/blob/main/github-project-filter.user.js#L48>
 * Timeouts are never cool and always the last resort, can you come up with something better? <https://github.com/mifriis/github-project-filter/blob/main/github-project-filter.user.js#L52>
 
