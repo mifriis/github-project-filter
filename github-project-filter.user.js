@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         GitHub projects - Quick board filters
 // @namespace    michael.friis.userscripts
-// @version      1.5
+// @version      1.6
 // @description  Select boxes that allow filtering on milestones and assignees easily based on what is on the board
 // @author       Michael Nissen Thorup Friis
 // @match        https://github.com/*/*/projects/*
@@ -10,6 +10,11 @@
 
 (function() {
     'use strict';
+
+    function setSearchQuery(query) {
+        document.querySelector('.subnav-search input').value = query;
+        document.querySelector('.subnav-search input').dispatchEvent(new KeyboardEvent('input')); // triggering the "input" event which causes the page to load new data, with the new value
+    }
 
     function setupMilestoneFilter() {
         function addDropdown(milestones) {
@@ -27,10 +32,7 @@
             }
 
             selectList.addEventListener('change', (event) => {
-                const currentProject = location.protocol + '//' + location.host + location.pathname
-
-                //Perhaps this part could be done without loading the entire page again, ideas?
-                window.location.replace(currentProject + "?card_filter_query=milestone%3A\"" + event.target.value + "\"");
+                setSearchQuery(`milestone:${event.target.value}`);
             });
         }
 
@@ -65,10 +67,7 @@
             }
 
             selectList.addEventListener('change', (event) => {
-                const currentProject = location.protocol + '//' + location.host + location.pathname
-
-                //Perhaps this part could be done without loading the entire page again, ideas?
-                window.location.replace(currentProject + "?card_filter_query=assignee%3A" + event.target.value);
+                setSearchQuery(`assignee:${event.target.value}`);
             });
         }
 
