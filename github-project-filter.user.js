@@ -11,9 +11,28 @@
 (function() {
     'use strict';
 
-    function setSearchQuery(query) {
+    let selectedUser = "", selectedMilestone = "";
+
+    function triggerSearch() {
+        let query = "";
+
+        if (selectedMilestone) {
+            query +=`milestone:${selectedMilestone} `;
+        }
+        if (selectedUser) {
+            query += `assignee:${selectedUser}`;
+        }
+        
         document.querySelector('.subnav-search input').value = query;
         document.querySelector('.subnav-search input').dispatchEvent(new KeyboardEvent('input')); // triggering the "input" event which causes the page to load new data, with the new value
+    }
+
+    function newEmptyOption() {
+        const option = document.createElement("option");
+        option.value = "";
+        option.text = "";
+
+        return option;
     }
 
     function setupMilestoneFilter() {
@@ -21,8 +40,9 @@
             const controlpanel = document.getElementsByClassName("project-header-controls")[0];
             const selectList = document.createElement("select");
             selectList.classList.add("form-control");
-            selectList.id = "assigneeFiltering";
+            selectList.id = "milestoneFiltering";
             controlpanel.insertBefore(selectList, controlpanel.firstChild);
+            selectList.appendChild(newEmptyOption());
 
             for (let i = 0; i < milestones.length; i++) {
                 const option = document.createElement("option");
@@ -32,7 +52,8 @@
             }
 
             selectList.addEventListener('change', (event) => {
-                setSearchQuery(`milestone:${event.target.value}`);
+                selectedMilestone = event.target.value;
+                triggerSearch();
             });
         }
 
@@ -58,6 +79,7 @@
             selectList.classList.add("form-control");
             selectList.id = "assigneeFiltering";
             controlpanel.insertBefore(selectList, controlpanel.firstChild);
+            selectList.appendChild(newEmptyOption());
 
             for (let i = 0; i < assignees.length; i++) {
                 const option = document.createElement("option");
@@ -67,7 +89,8 @@
             }
 
             selectList.addEventListener('change', (event) => {
-                setSearchQuery(`assignee:${event.target.value}`);
+                selectedUser = event.target.value;
+                triggerSearch();
             });
         }
 
@@ -86,7 +109,13 @@
         addDropdown(assignees);
     }
 
-
+    document.querySelector('.issues-reset-query').onclick = () => {
+        selectedMilestone = "";
+        selectedUser = "";
+        // Also clearing the selections in the DOM.
+        document.querySelector("#assigneeFiltering").value = "";
+        document.querySelector("#milestoneFiltering").value = "";
+    }
 
     //Github loads in each column async. We need to wait until the first column popsup, then wait a little while longer as the rest load. Please help make this better!
     (new MutationObserver(check)).observe(document, {childList: true, subtree: true});
