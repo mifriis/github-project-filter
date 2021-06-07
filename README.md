@@ -9,6 +9,7 @@ We keep forgetting what each others usernames are making daily a bit difficult. 
 
 	* Firefox - install [Tampermonkey](https://tampermonkey.net/?ext=dhdg&browser=firefox) or [Greasemonkey](https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/)
 	* Chrome - install [Tampermonkey](https://tampermonkey.net/?ext=dhdg&browser=chrome).
+	* Safari - install [Tampermonkey](https://apps.apple.com/app/tampermonkey/id1482490089)
 
 2. Install: <https://raw.githubusercontent.com/mifriis/github-project-filter/main/github-project-filter.user.js>
 
