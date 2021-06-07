@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         GitHub projects - Quick board filters
 // @namespace    michael.friis.userscripts
-// @version      1.6
+// @version      1.7
 // @description  Select boxes that allow filtering on milestones and assignees easily based on what is on the board
 // @author       Michael Nissen Thorup Friis
 // @match        https://github.com/*/*/projects/*
@@ -17,12 +17,12 @@
         let query = "";
 
         if (selectedMilestone) {
-            query +=`milestone:${selectedMilestone} `;
+            query +=`milestone:"${selectedMilestone}"`;
         }
         if (selectedUser) {
-            query += `assignee:${selectedUser}`;
+            query += `assignee:"${selectedUser}"`;
         }
-        
+
         document.querySelector('.subnav-search input').value = query;
         document.querySelector('.subnav-search input').dispatchEvent(new KeyboardEvent('input')); // triggering the "input" event which causes the page to load new data, with the new value
     }
