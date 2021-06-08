@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         GitHub projects - Quick board filters
 // @namespace    michael.friis.userscripts
-// @version      1.7
+// @version      1.8
 // @description  Select boxes that allow filtering on milestones and assignees easily based on what is on the board
 // @author       Michael Nissen Thorup Friis
 // @match        https://github.com/*/*/projects/*
@@ -12,6 +12,16 @@
     'use strict';
 
     let selectedUser = "", selectedMilestone = "";
+
+    function highlightBlockedCards() {
+        [...document.querySelectorAll(".IssueLabel")]
+            .filter((el) => el.textContent.includes("Blocked"))
+            .forEach((el) => {
+                el.parentElement.parentElement.style.background = "rgba(255, 0, 0, 0.2)";
+            });
+    }
+
+    highlightBlockedCards();
 
     function triggerSearch() {
         let query = "";
@@ -25,6 +35,7 @@
 
         document.querySelector('.subnav-search input').value = query;
         document.querySelector('.subnav-search input').dispatchEvent(new KeyboardEvent('input')); // triggering the "input" event which causes the page to load new data, with the new value
+        highlightBlockedCards();
     }
 
     function newEmptyOption() {
@@ -126,6 +137,7 @@
             setTimeout(function() {
                 setupAssigneeFilter();
                 setupMilestoneFilter();
+                highlightBlockedCards(); // I suppose the cards are loaded every second, making sure we highlight them properly.
             }, delayInMilliseconds);
 
         }
