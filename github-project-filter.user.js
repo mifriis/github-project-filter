@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         GitHub projects - Quick board filters
 // @namespace    michael.friis.userscripts
-// @version      1.7
+// @version      1.8
 // @description  Select boxes that allow filtering on milestones and assignees easily based on what is on the board
 // @author       Michael Nissen Thorup Friis
 // @match        https://github.com/*/*/projects/*
